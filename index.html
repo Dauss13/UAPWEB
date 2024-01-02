@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasir</title>
+</head>
+
+<body>
+    <h2>Sistem Kasir</h2>
+
+    <h3>Silahkan Masukkan belanjaan anda</h3>
+
+    <label for="kodeBarang">Kode Barang:</label>
+    <input type="number" , id="kodeBarang" , placeholder="Masukkan Kode Barang">
+
+    <label for="namaBarang">Nama Barang:</label>
+    <input type="text" , id="namaBarang" , placeholder="Masukkan Nama Barang">
+
+    <label for="hargaBarang">Harga Barang:</label>
+    <input type="number" , id="hargaBarang" , placeholder="Masukkan Harga Barang">
+
+    <button onclick=tambahkanBarang()>Tambahkan</button>
+
+    <div id="totalBelanja"></div>
+
+    <div id="detailBarang"></div>
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+        function tambahkanBarang() {
+            var kodeBarang = document.getElementById('kodeBarang').value;
+            var namaBarang = document.getElementById('namaBarang').value;
+            var hargaBarang = parseInt(document.getElementById('hargaBarang').value);
+
+            var totalBelanja = parseInt(document.getElementById('totalBelanja').innerHTML.replace('Rp ', '')) || 0;
+            totalBelanja += hargaBarang;
+
+            document.getElementById('totalBelanja').innerHTML = 'Rp ' + totalBelanja.toFixed(0);
+
+            document.getElementById('detailBarang').innerHTML += `
+            <label>Kode Barang : ${kodeBarang}</label> 
+            <label>Nama Barang : ${namaBarang}</label> 
+            <label>Harga : ${hargaBarang}</>
+            `
+        }
+    </script>
+
+</body>
+
+</html>
